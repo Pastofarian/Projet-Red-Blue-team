@@ -23,7 +23,14 @@ exports.connectUser = (req, res) => {
                 if (error) {
                     res.status(500).send(error + '. Please contact the webmaster')
                 } else if (result) {
-                    const token = jwt.sign({ user_id: user.id, user_role: user.role }, process.env.ACCESS_TOKEN_SECRET);
+                    // Injection of the vulnerability -->
+                    const token = jwt.sign(
+                        { userId: user.id, role: user.role },
+                        '',                        // No signing keys
+                        { algorithm: 'none' }      // Vulnerability: No verification
+                      );        
+                    //old and secure JWT -->
+                    //const token = jwt.sign({ user_id: user.id, user_role: user.role }, process.env.ACCESS_TOKEN_SECRET);
                     res.status(200).json({ token, role: user.role })
                 } else {
                     res.status(403).send('Invalid authentication')

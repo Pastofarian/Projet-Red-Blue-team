@@ -7,6 +7,7 @@ import axios from "axios";
 import tools from "../toolBox"
 
 import ButtonUser from "../components/ButtonUser";
+import LogoutButton from "../components/LogoutButton"; // logout button
 
 class Index extends React.Component {
 
@@ -65,6 +66,8 @@ class Index extends React.Component {
       <>
         <div>
           Ravi de te voir {this.state.mail},
+          {/* logout button */}
+          <LogoutButton />
           <ButtonUser handleClick={this.toggleSecret} />
           {this.state.showSecret ? <div>{this.state.secret}</div> : <div>***************</div>}
         </div>

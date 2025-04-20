@@ -21,3 +21,9 @@ exports.checkIfConnected = () => {
     }
     return false;
 }
+
+// ===== To disconnect =====
+exports.logout = () => {
+    // delete the token
+    document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+};

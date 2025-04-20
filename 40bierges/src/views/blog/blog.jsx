@@ -8,6 +8,7 @@ import '../../assets/css/main.css'
 import tools from "../../toolBox"
 import axios from "axios";
 
+import LogoutButton from "../../components/LogoutButton"; //Logout button
 
 class Blog extends React.Component {
 
@@ -81,6 +82,8 @@ class Blog extends React.Component {
     if (this.state.isLoading) return (<p>Please wait...</p>);
     return (
       <>
+        {/* Bouton de déconnexion */}
+        <LogoutButton />
         <div>
           <textarea name="newMessage" value={this.state.newMessage} onChange={this.handleChange}></textarea>
           <button onClick={this.handleSend}>Poster ce nouveau message</button>

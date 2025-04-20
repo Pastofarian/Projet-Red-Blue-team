@@ -7,6 +7,7 @@ import axios from "axios";
 import tools from "../../toolBox"
 
 import ButtonUser from "../../components/ButtonUser";
+import LogoutButton from "../../components/LogoutButton"; //Logout button
 
 class Admin extends React.Component {
 
@@ -70,6 +71,8 @@ class Admin extends React.Component {
             <>
                 <div>
                     Bienvenu sur votre page ultime cher Admin !
+                    {/* Logout button*/}
+                    <LogoutButton />
                     <ButtonUser handleClick={this.toggleSecret} />
                     {this.state.showSecret ? <div>{this.state.userList[0].secret}</div> : <div>***************</div>}
                 </div>

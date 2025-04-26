@@ -1,6 +1,5 @@
 const winston = require('winston');
 require('winston-daily-rotate-file');
-require('winston-syslog');
 
 const path = require('path');
 const fs = require('fs');
@@ -19,26 +18,13 @@ const rotateTransport = new winston.transports.DailyRotateFile({
   level: 'info'
 });
 
-// remote syslog transport (UDP)
-// update host/port for your remote syslog or Kali host
-const syslogTransport = new winston.transports.Syslog({
-  host: process.env.SYSLOG_HOST || '192.168.1.100',
-  port: process.env.SYSLOG_PORT || 514,
-  protocol: 'udp4',
-  app_name: 'site40Bierges',
-  localhost: 'api-vm'
-});
-
-// create Winston logger
 const logger = winston.createLogger({
   format: winston.format.combine(
-    winston.format.timestamp(),
-    // JSON format for easier parsing
-    winston.format.json()
+      winston.format.timestamp(),
+      winston.format.json()
   ),
   transports: [
-    rotateTransport,
-    syslogTransport
+    rotateTransport
   ],
   exitOnError: false
 });
@@ -47,7 +33,6 @@ const logger = winston.createLogger({
 module.exports = (req, res, next) => {
   const start = Date.now();
 
-  // on response finish, log the entry
   res.on('finish', () => {
     const duration = Date.now() - start;
     const entry = {

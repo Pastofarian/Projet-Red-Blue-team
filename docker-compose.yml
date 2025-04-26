@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+    container_name: bierge-api
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  front:
+    build:
+      context: ./40bierges
+    container_name: bierge-front
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - api
+
+networks:
+  app-network:
+    driver: bridge

@@ -23,16 +23,12 @@
 
 # DOCKER-COMPOSE
 
-A la racine : ./siteBierges
-
-La première fois :
-
-- docker-compose up -d --build
-
-Ensuite :
+A la racine du projet :
 
 - docker-compose up -d
 
 # URL de connexion
 
 - http://localhost:3000/login
+- username : admin@admin.com
+- password : w(#6wzZ34AuT[3

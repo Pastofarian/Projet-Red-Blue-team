@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: ./api
-    container_name: bierge-api
+    container_name: bierges-api
     ports:
       - "3001:3001"
     networks:
@@ -13,7 +13,9 @@ services:
   front:
     build:
       context: ./40bierges
-    container_name: bierge-front
+    container_name: bierges-front
+    env_file:
+      - /api/.env
     ports:
       - "3000:3000"
     networks:

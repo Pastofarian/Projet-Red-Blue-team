@@ -25,8 +25,7 @@
 
 A la racine du projet :
 
-- docker-compose up -d
-- docker-compose up --build
+- docker-compose up -d --build (première fois)
 
 # URL de connexion
 

@@ -1,7 +1,11 @@
-var whitelist = ['http://localhost',
-  'http://localhost:8080',
-  'http://localhost:3000',
-  'http://localhost:3001']
+
+require('dotenv').config();
+
+var whitelist = [`http://${process.env.URL_API}:80`,
+  `http://${process.env.URL_API}:8080`,
+  `http://${process.env.URL_API}:3000`,
+  `http://${process.env.URL_API}`,
+  `http://${process.env.URL_API}:3001`]
 
 module.exports = corsOptions = {
   origin: function (origin, callback) {
